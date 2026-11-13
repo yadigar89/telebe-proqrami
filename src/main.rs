@@ -61,6 +61,11 @@ fn oxu(izah: &str) -> String{
         Err(_) => String::new(),
     }
 }
+fn tap<'a>(telebeler: &'a[Telebe], ad: &str) ->Option<&'a Telebe>{
+
+    telebeler.iter().find(|t| t.ad == ad)
+
+}
 fn main() {
 
     let mut telebeler = fayildan_oxu();
@@ -69,7 +74,9 @@ fn main() {
         println!("\n1 - Telebelerin siyahisi:");
         println!("2 - Telebe elave et");
         println!("3 - Fayla saxla");
-        println!("4 - Cixis");
+        println!("4 - Telebe axtar");
+        println!("5 - Telebe sil");
+        println!("6 - Cixis");
 
         let secim = oxu("Secim edin:");
 
@@ -99,6 +106,26 @@ fn main() {
                 }
             }
             "4" =>{
+                let ad = oxu("Axtarilan ad:");
+
+                match tap(&telebeler, &ad) {
+                    Some(t) =>println!("Tapildi: {}, {}, {}", t.ad, t.yas, t.ixtisas),
+                    None =>println!("Bele telebe yoxdur"),
+                }
+            }
+            "5" =>{
+
+                let ad = oxu("Silinecek ad:");
+
+                match telebeler.iter().position(|t| t.ad == ad){
+                    Some(yer) =>{
+                        telebeler.remove(yer);
+                        println!("Silindi");
+                    }
+                    None =>println!("Bele telebe yoxdur.")
+                }
+            }
+            "6" =>{
                 println!("Gorusenedek!");
                 break;
             }
