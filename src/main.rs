@@ -1,11 +1,8 @@
+mod telebe;
 
+use telebe::Telebe;
 use std::io;
 use std::fs;
-struct Telebe{
-    ad: String,
-    yas: i32,
-    ixtisas: String,
-}
 fn setirden_telebe(setir: &str) ->Result<Telebe, String>{
 
     let hisseler: Vec<&str> = setir.split(',').collect();
