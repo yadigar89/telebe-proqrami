@@ -1,6 +1,6 @@
 # Tələbə İdarəetmə Proqramı
 
-Rust dilində yazılmış sadə terminal proqramı. telebə siyahısı saxlayır, əlavə edir, fayla yazır.
+Rust dilində yazılmış sadə terminal proqramı. Tələbə siyahısını saxlayır, əlavə edir, axtarır, silir və fayla yazır.
 
 ## İşə salmaq
 
@@ -10,4 +10,29 @@ cargo run
 
 ## Menyu
 
-Telebelerin siyahisi, Telebe elave et, Fayla saxla, Cixis.
+1. Tələbələrin siyahısı
+2. Tələbə əlavə et
+3. Fayla saxla
+4. Tələbə axtar
+5. Tələbə sil
+6. Çıxış
+
+## Məlumatın saxlanması
+
+Məlumat `telebeler.txt` faylında hər sətirdə bir tələbə olmaqla saxlanılır:
+
+```
+Ad, yaş, ixtisas
+```
+
+Proqram açılanda fayl oxunur. Fayl yoxdursa, boş siyahı ilə başlayır.
+
+## Testlər
+
+```
+cargo test
+```
+
+## Öyrənilən mövzular
+
+Rust: struct, enum, Result, fayl oxuma/yazma, modullar, testlər.
