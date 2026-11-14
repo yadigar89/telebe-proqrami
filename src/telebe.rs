@@ -63,3 +63,24 @@ pub fn tap<'a>(telebeler: &'a[Telebe], ad: &str) ->Option<&'a Telebe>{
     
     telebeler.iter().find(|t| t.ad == ad)
 }
+#[cfg(test)]
+mod tesler {
+    use super::*;
+
+    #[test]
+    fn duzgun_setir(){
+        let netice = setirden_telebe("Yadigar, 36, Proqramci");
+        assert!(netice.is_ok());
+    }
+    #[test]
+    fn sehv_yas() {
+        let netice = setirden_telebe("Yadigar, abc, Proqramci");
+        assert!(netice.is_err());
+    }
+    #[test]
+    fn az_hisse() {
+        let netice = setirden_telebe("Yadigar, Proqramci");
+        assert!(netice.is_err());
+    }
+
+}
