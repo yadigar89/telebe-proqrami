@@ -1,5 +1,5 @@
 mod telebe;
-use telebe::{Telebe, fayildan_oxu, fayla_yaz, oxu, tap};
+use telebe::{Telebe, fayildan_oxu, fayla_yaz, oxu, tap, tap_deyis};
 
 
 
@@ -13,7 +13,8 @@ fn main() {
         println!("3 - Fayla saxla");
         println!("4 - Telebe axtar");
         println!("5 - Telebe sil");
-        println!("6 - Cixis");
+        println!("6 - Yasi deyis");
+        println!("7 - Cixis");
 
         let secim = oxu("Secim edin:");
 
@@ -63,6 +64,21 @@ fn main() {
                 }
             }
             "6" =>{
+                let ad = oxu("Telebenin adi:");
+                let yeni_yas = oxu("Yeni yas:");
+
+                match yeni_yas.parse::<i32>(){
+                    Ok(yas) =>match tap_deyis(&mut telebeler, &ad){
+                        Some(t) =>{
+                            t.yas = yas;
+                            println!("Yenilendi");
+                        }
+                        None =>println!("Bele telebe yoxdur."),
+                    },
+                    Err(_) =>println!("Yas ededi duz deyil."),
+                }
+            }
+            "7" =>{
                 println!("Gorusenedek!");
                 break;
             }

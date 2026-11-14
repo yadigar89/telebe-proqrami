@@ -63,6 +63,10 @@ pub fn tap<'a>(telebeler: &'a[Telebe], ad: &str) ->Option<&'a Telebe>{
     
     telebeler.iter().find(|t| t.ad == ad)
 }
+pub fn tap_deyis<'a>(telebeler: &'a mut [Telebe], ad: &str) ->Option<&'a mut Telebe>{
+
+    telebeler.iter_mut().find(|t| t.ad == ad)
+}
 #[cfg(test)]
 mod tesler {
     use super::*;
