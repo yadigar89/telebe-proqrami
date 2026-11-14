@@ -19,7 +19,7 @@ pub fn setirden_telebe(setir: &str) ->Result<Telebe, String>{
     Ok(Telebe{
         ad: String::from(hisseler[0].trim()),
         yas,
-        ixtisas: String::from(hisseler[2]),
+        ixtisas: String::from(hisseler[2].trim()),
     })
 }
 pub fn fayildan_oxu() ->Vec<Telebe>{
@@ -81,6 +81,15 @@ mod tesler {
     fn az_hisse() {
         let netice = setirden_telebe("Yadigar, Proqramci");
         assert!(netice.is_err());
+    }
+    #[test]
+        fn bosluq_temizlenir() {
+            let netice = setirden_telebe(" Yadigar, 36, Proqramci ");
+            let t = netice.unwrap();
+            assert_eq!(t.ad, "Yadigar");
+            assert_eq!(t.yas, 36);
+            assert_eq!(t.ixtisas, "Proqramci");
+        
     }
 
 }
