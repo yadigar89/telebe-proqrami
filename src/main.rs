@@ -1,8 +1,26 @@
 mod telebe;
 use telebe::{Telebe, fayildan_oxu, fayla_yaz, oxu, tap, tap_deyis};
-
-
-
+enum Secim {
+    Siyahi,
+    Elave,
+    Saxla,
+    Axtar,
+    Sil,
+    YasDeyis,
+    Cixis,
+}
+fn secimi_oxu(metn: &str) ->Option<Secim> {
+    match metn{
+        "1" =>Some(Secim::Siyahi),
+        "2" =>Some(Secim::Elave),
+        "3" =>Some(Secim::Saxla),
+        "4" =>Some(Secim::Axtar),
+        "5" =>Some(Secim::Sil),
+        "6" =>Some(Secim::YasDeyis),
+        "7" =>Some(Secim::Cixis),
+        _=> None,
+    }
+}
 fn main() {
 
     let mut telebeler = fayildan_oxu();
@@ -16,15 +34,15 @@ fn main() {
         println!("6 - Yasi deyis");
         println!("7 - Cixis");
 
-        let secim = oxu("Secim edin:");
+        let giris = oxu("Secim edin:");
 
-        match secim.as_str(){
-            "1" =>{
+        match secimi_oxu(&giris){
+            Some(Secim::Siyahi) =>{
                 for t in &telebeler{
                     println!("{}, {}, {}.", t.ad, t.yas, t.ixtisas);
                 }
             }
-            "2" => {
+            Some(Secim::Elave) => {
                 let ad = oxu("Ad");
                 let yas_metni = oxu("Yas");
                 let ixtisas = oxu("Ixtisas");
@@ -37,13 +55,13 @@ fn main() {
                     Err(_) =>println!("Yas ededi duz deyil"),
                 }
             }
-            "3" =>{
+            Some(Secim::Saxla) =>{
                 match fayla_yaz(&telebeler){
                     Ok(_) =>println!("Saxlanlidi"),
                     Err(e) =>println!("Xeta: {e}"),
                 }
             }
-            "4" =>{
+            Some(Secim::Axtar) =>{
                 let ad = oxu("Axtarilan ad:");
 
                 match tap(&telebeler, &ad) {
@@ -51,7 +69,7 @@ fn main() {
                     None =>println!("Bele telebe yoxdur"),
                 }
             }
-            "5" =>{
+            Some(Secim::Sil) =>{
 
                 let ad = oxu("Silinecek ad:");
 
@@ -63,7 +81,7 @@ fn main() {
                     None =>println!("Bele telebe yoxdur.")
                 }
             }
-            "6" =>{
+            Some(Secim::YasDeyis) =>{
                 let ad = oxu("Telebenin adi:");
                 let yeni_yas = oxu("Yeni yas:");
 
@@ -78,11 +96,11 @@ fn main() {
                     Err(_) =>println!("Yas ededi duz deyil."),
                 }
             }
-            "7" =>{
+            Some(Secim::Cixis) =>{
                 println!("Gorusenedek!");
                 break;
             }
-            _ =>println!("Bele secim yoxdur."),
+            None =>println!("Bele secim yoxdur."),
         }
     }
 }
