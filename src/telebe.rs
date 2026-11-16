@@ -4,6 +4,14 @@ pub struct Telebe{
     pub yas: i32,
     pub ixtisas: String,
 }
+pub trait Tanit{
+    fn tanit(&self) ->String;
+}
+impl Tanit for Telebe{
+    fn tanit(&self) ->String {
+        format!("Ad: {}, yas: {}, ixtisas: {}",self.ad, self.yas, self.ixtisas)
+    }
+}
 pub fn setirden_telebe(setir: &str) ->Result<Telebe, String>{
    
     let hisseler: Vec<&str> = setir.split(',').collect();

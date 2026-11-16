@@ -1,5 +1,5 @@
 mod telebe;
-use telebe::{Telebe, fayildan_oxu, fayla_yaz, oxu, tap, tap_deyis};
+use telebe::{Telebe, Tanit, fayildan_oxu, fayla_yaz, oxu, tap, tap_deyis};
 enum Secim {
     Siyahi,
     Elave,
@@ -39,7 +39,7 @@ fn main() {
         match secimi_oxu(&giris){
             Some(Secim::Siyahi) =>{
                 for t in &telebeler{
-                    println!("{}, {}, {}.", t.ad, t.yas, t.ixtisas);
+                    println!("{}", t.tanit());
                 }
             }
             Some(Secim::Elave) => {
