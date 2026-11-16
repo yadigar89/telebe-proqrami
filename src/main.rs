@@ -1,5 +1,5 @@
 mod telebe;
-use telebe::{Telebe, Tanit, fayildan_oxu, fayla_yaz, oxu, tap, tap_deyis, boyuk_say};
+use telebe::{Telebe, Tanit, fayildan_oxu, fayla_yaz, oxu, tap, tap_deyis, boyuk_say, yasa_gore_sirala};
 enum Secim {
     Siyahi,
     Elave,
@@ -7,6 +7,7 @@ enum Secim {
     Axtar,
     Sil,
     YasDeyis,
+    Sirala,
     Cixis,
 }
 fn secimi_oxu(metn: &str) ->Option<Secim> {
@@ -17,7 +18,8 @@ fn secimi_oxu(metn: &str) ->Option<Secim> {
         "4" =>Some(Secim::Axtar),
         "5" =>Some(Secim::Sil),
         "6" =>Some(Secim::YasDeyis),
-        "7" =>Some(Secim::Cixis),
+        "7" =>Some(Secim::Sirala),
+        "8" =>Some(Secim::Cixis),
         _=> None,
     }
 }
@@ -32,7 +34,8 @@ fn main() {
         println!("4 - Telebe axtar");
         println!("5 - Telebe sil");
         println!("6 - Yasi deyis");
-        println!("7 - Cixis");
+        println!("7 - Yasa gore sirala");
+        println!("8 - Cixis");
 
         let giris = oxu("Secim edin:");
 
@@ -95,6 +98,10 @@ fn main() {
                     },
                     Err(_) =>println!("Yas ededi duz deyil."),
                 }
+            }
+            Some(Secim::Sirala) =>{
+                yasa_gore_sirala(&mut telebeler);
+                println!("Siralandi");
             }
             Some(Secim::Cixis) =>{
                 println!("Gorusenedek!");

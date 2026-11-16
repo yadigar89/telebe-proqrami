@@ -78,6 +78,9 @@ pub fn tap_deyis<'a>(telebeler: &'a mut [Telebe], ad: &str) ->Option<&'a mut Tel
 pub fn boyuk_say(telebeler: &[Telebe], yas: i32)->usize{
     telebeler.iter().filter(|t|t.yas > yas).count()
 }
+pub fn yasa_gore_sirala(telebeler: &mut Vec<Telebe>){
+    telebeler.sort_by_key(|t| t.yas);
+}
 #[cfg(test)]
 mod tesler {
     use super::*;
