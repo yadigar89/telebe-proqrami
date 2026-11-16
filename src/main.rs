@@ -65,7 +65,7 @@ fn main() {
                 let ad = oxu("Axtarilan ad:");
 
                 match tap(&telebeler, &ad) {
-                    Some(t) =>println!("Tapildi: {}, {}, {}", t.ad, t.yas, t.ixtisas),
+                    Some(t) =>println!("Tapildi: {}",t.tanit()),
                     None =>println!("Bele telebe yoxdur"),
                 }
             }
