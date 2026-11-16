@@ -8,6 +8,7 @@ enum Secim {
     Sil,
     YasDeyis,
     Sirala,
+    Say,
     Cixis,
 }
 fn secimi_oxu(metn: &str) ->Option<Secim> {
@@ -19,7 +20,8 @@ fn secimi_oxu(metn: &str) ->Option<Secim> {
         "5" =>Some(Secim::Sil),
         "6" =>Some(Secim::YasDeyis),
         "7" =>Some(Secim::Sirala),
-        "8" =>Some(Secim::Cixis),
+        "8" =>Some(Secim::Say),
+        "9" =>Some(Secim::Cixis),
         _=> None,
     }
 }
@@ -35,7 +37,8 @@ fn main() {
         println!("5 - Telebe sil");
         println!("6 - Yasi deyis");
         println!("7 - Yasa gore sirala");
-        println!("8 - Cixis");
+        println!("8 - Yasdan boyuk olanlarin sayi");
+        println!("9 - Cixis");
 
         let giris = oxu("Secim edin:");
 
@@ -102,6 +105,17 @@ fn main() {
             Some(Secim::Sirala) =>{
                 yasa_gore_sirala(&mut telebeler);
                 println!("Siralandi");
+            }
+            Some(Secim::Say) =>{
+                let yas_metni = oxu("Hansi yasdan boyuk:");
+
+                match yas_metni.parse::<i32>() {
+                    Ok(yas) =>{
+                        let say = boyuk_say(&telebeler, yas);
+                        println!("{yas} yasdan boyuk olanlarin sayi: {say}");
+                    }
+                    Err(_) =>println!("Yas ededi duz deyil"),
+                }
             }
             Some(Secim::Cixis) =>{
                 println!("Gorusenedek!");
