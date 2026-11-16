@@ -1,6 +1,6 @@
 # Tələbə İdarəetmə Proqramı
 
-Rust dilində yazılmış sadə terminal proqramı. Tələbə siyahısını saxlayır, əlavə edir, axtarır, silir və fayla yazır.
+Rust dilində yazılmış sadə terminal proqramı. Tələbə siyahısını saxlayır, əlavə edir, axtarır, silir, sıralayır və fayla yazır.
 
 ## İşə salmaq
 
@@ -15,7 +15,10 @@ cargo run
 3. Fayla saxla
 4. Tələbə axtar
 5. Tələbə sil
-6. Çıxış
+6. Yaşı dəyiş
+7. Yaşa görə sırala
+8. Yaşdan böyük olanların sayı
+9. Çıxış
 
 ## Məlumatın saxlanması
 
@@ -35,4 +38,4 @@ cargo test
 
 ## Öyrənilən mövzular
 
-Rust: struct, enum, Result, fayl oxuma/yazma, modullar, testlər.
+Rust: struct, enum, Result, fayl oxuma/yazma, modullar, testlər, trait, iter/filter/map.
