@@ -1,5 +1,5 @@
 mod telebe;
-use telebe::{Telebe, Tanit, fayildan_oxu, fayla_yaz, oxu, tap, tap_deyis};
+use telebe::{Telebe, Tanit, fayildan_oxu, fayla_yaz, oxu, tap, tap_deyis, boyuk_say};
 enum Secim {
     Siyahi,
     Elave,
